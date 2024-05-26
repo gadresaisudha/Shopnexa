@@ -1,6 +1,6 @@
 import express from "express";
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
-import { addProduct , updateProductDetails, deleteProduct, getAllProducts, getProductById, fetchAllProducts, addProductReview, fetchTopProducts, fetchNewProducts} from "../controllers/productController.js";
+import { addProduct , updateProductDetails, deleteProduct, getAllProducts, getProductById, fetchAllProducts, addProductReview, fetchTopProducts, fetchNewProducts, filterProducts} from "../controllers/productController.js";
 import formidable from "express-formidable";
 import checkId  from "../middlewares/checkId.js";
 
@@ -13,7 +13,7 @@ router.get("/new", fetchNewProducts);
 
 router.route('/:id').get(getProductById).put(authenticate, authorizeAdmin, formidable(),updateProductDetails).delete(authenticate, authorizeAdmin,deleteProduct);
 
-
+router.route('/filtered-products').post(filterProducts);
 
 
 export default router;

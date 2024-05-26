@@ -19,7 +19,7 @@ import moment from "moment";
 import HeartIcon from "./HeartIcon";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
-//import { addToCart } from "../../redux/features/cart/cartSlice";
+import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -59,7 +59,7 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
-    //dispatch(addToCart({ ...product, qty }));
+    dispatch(addToCart({ ...product, qty }));
     navigate("/cart");
   };
 
